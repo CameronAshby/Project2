@@ -4,3 +4,29 @@ html {
     height: 100%;
     width: 100%;
 }
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.mainContainer {
+    padding: 50px 0;
+    width: 80%;
+}
+
+.listContainer {
+    display: flex;
+}
+
+.listBar {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.listContent {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
