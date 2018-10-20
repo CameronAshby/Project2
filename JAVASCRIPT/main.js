@@ -28,7 +28,7 @@ class newList {
 //     };
 // }
 
-// Functions
+// Adding Functions
 
 function addList() {
 
@@ -71,21 +71,21 @@ function displayLists() {
 }
 
 function displayTasks() {
-    $('.listContent').html('<button class="listItem" onclick="addListItem()">Add Task<i class="fas fa-plus-circle"></i></button>');
+    $('.listContent').html('<button class="listItem" onclick="addTasks()">Add Task<i class="fas fa-plus-circle"></i></button>');
 
     if(activeList.tasks.length !== 0) {
         for(let i = 0; i < activeList.tasks.length; i++) {
             $('.listContent').append(
                 '<div class="taskContainer">' +
                     '<input id="task' + i +'" type="text" onchange="getTaskName(this.value, this.id)" value="' + activeList.tasks[i] + '">' +
-                    '<div class="icons"><button>Delete Task<i class="trash fas fa-trash-alt"></i></button><button>Complete?<i class="fas fa-square"></i></button></div>' +
+                    '<div class="icons"><button id="deleteTask"' + i + ' onclick="deleteTasks(this.id)">Delete Task<i class="trash fas fa-trash-alt"></i></button><button>Complete?<i class="fas fa-square"></i></button></div>' +
                 '</div>'
             );
         }
     }
 }
 
-function addListItem() {
+function addTasks() {
     activeList.tasks.push('');
 
     $('.listContent').append(
@@ -96,5 +96,13 @@ function addListItem() {
 function getTaskName(taskVal, taskId) {
     let index = taskId.split('k');
     activeList.tasks[index[1]] = taskVal;
+    displayTasks();
+}
+
+// Deleting Functions
+
+function deleteTasks(taskId) {
+    let index = taskId.split('k');
+    activeList.tasks.splice(index[1], 1);
     displayTasks();
 }
