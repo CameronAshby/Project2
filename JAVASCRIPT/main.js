@@ -1,3 +1,5 @@
+// Variables
+
 let listArray = [];
 let listIdCounter = 0;
 let activeList;
@@ -32,13 +34,13 @@ class newList {
 // Adding Functions
 
 function addList() {
-
+    console.log(listIdCounter);
     listArray.push(new newList());
 
     $('.listBar').append(
         '<div class="listEditContainer" id="' + listIdCounter +'">' +
-            '<input id="input' + listIdCounter + '" type="text" placeholder="Enter List Name" onchange="getListName(this.value, this.id)">' +
-            '<div class="icons"><button id="deleteList"'+listIdCounter+' onclick="deleteLists(this.id)">Delete List<i class="trash fas fa-trash-alt"></i></button><button onclick="editList(this.id)" id="button' + listIdCounter +'">Edit Tasks<i class="edit fas fa-edit"></i></button></div>' +
+        '<div class="icons"><button type="button" class="btn" id="deleteList' + listIdCounter + '" onclick="deleteLists(this.id)"><i class="trash fas fa-trash-alt"></i></button><button type="button" class="btn" onclick="editList(this.id)" id="button' + listIdCounter +'"><i class="edit fas fa-edit"></i></button></div>' +
+        '<input id="input' + listIdCounter + '" type="text" placeholder="Enter List Name" onchange="getListName(this.value, this.id)">' +
         '</div>'
     );
 
@@ -52,19 +54,21 @@ function getListName(listVal, listId) {
 }
 
 function editList(buttonId) {
+    console.log(buttonId);
     let newId = buttonId.split('n');
     activeList = listArray[newId[1]];
     displayTasks();
 }
 
 function displayLists() {
+    console.log(listIdCounter);
     $('.listBar').html('');
     if(listArray.length !== 0) {
         for(let i = 0; i < listArray.length; i++) {
             $('.listBar').append(
                 '<div class="listEditContainer" id="' + i +'">' +
+                '<div class="icons"><button type="button" class="btn" id="deleteList'+listIdCounter+'" onclick="deleteLists(this.id)"><i class="trash fas fa-trash-alt"></i></button><button type="button" class="btn" onclick="editList(this.id)" id="button' + listIdCounter +'"><i class="edit fas fa-edit"></i></button></div>' +
                 '<input id="input' + i + '" type="text" onchange="getListName(this.value, this.id)" value="'+ listArray[i].listName +'">' +
-                '<div class="icons"><button id="deleteList"'+i+' onclick="deleteLists(this.id)">Delete List<i class="trash fas fa-trash-alt"></i></button><button onclick="editList(this.id)" id="button' + i +'">Edit Tasks<i class="edit fas fa-edit"></i></button></div>' +
                 '</div>'
             );
         }
@@ -72,24 +76,24 @@ function displayLists() {
 }
 
 function displayTasks() {
-    $('.listContent').html('<button class="listItem" onclick="addTasks()">Add Task<i class="fas fa-plus-circle"></i></button><button class="clearCompleteButton" onclick="clearComplete()">Clear Complete</button>');
+    $('.listContent').html('<div id="taskFunctionButtonContainer"><button type="button" class="listItem btn btn-secondary" onclick="addTasks()">Add Task <i class="fas fa-plus-circle"></i></button><button type="button" class="listItem btn btn-secondary clearCompleteButton" onclick="clearComplete()">Clear Complete</button></div>');
 
     if(activeList.tasks.length !== 0) {
         for(let i = 0; i < activeList.tasks.length; i++) {
             $('.listContent').append(
                 '<div class="taskContainer">' +
                 '<input id="task' + i +'" type="text" onchange="getTaskName(this.value, this.id)" value="' + activeList.tasks[i] + '">' +
-                '<button id="deleteTask' + i +'" onclick="deleteTasks(this.id)">Delete Task<i class="trash fas fa-trash-alt"></i></button></div>'
+                '<button id="deleteTask' + i +'" onclick="deleteTasks(this.id)"><i class="trash fas fa-trash-alt"></i></button></div>'
             );
 
             if (activeList.taskCompleted[i] == true) {
                 $('.listContent').append(
-                    '<button id="complete_'+ i +'" onclick="markUncomplete(this.id)">Complete<i class="fas fa-check-square"></i></button>'
+                    '<button id="complete_'+ i +'" onclick="markUncomplete(this.id)"><i class="fas fa-check-square"></i></button>'
                 );
             }
             else {
                 $('.listContent').append(
-                    '<button id="complete_'+ i +'" onclick="markComplete(this.id)">Complete<i class="fas fa-square"></i></button>'
+                    '<button id="complete_'+ i +'" onclick="markComplete(this.id)"><i class="fas fa-square"></i></button>'
                 );
             }
             $('.listContent').append(
@@ -128,6 +132,7 @@ function deleteLists(listId) {
     listArray.splice(index[1], 1);
     displayLists();
     $('.listContent').html('');
+    listIdCounter--;
 }
 
 function markComplete(taskId) {
@@ -148,6 +153,7 @@ function clearComplete() {
         if(activeList.taskCompleted[i] === true) {
             activeList.taskCompleted.splice(i, 1);
             activeList.tasks.splice(i, 1);
+            i--;
         }
     }
 

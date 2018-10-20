@@ -10,17 +10,29 @@ body {
     justify-content: center;
 }
 
+.navBar {
+    width: 90%;
+}
+
 .navbar {
     background-color: darkolivegreen;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .mainContainer {
     padding: 50px 0;
-    width: 80%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .listContainer {
     display: flex;
+    justify-content: space-between;
+    width: 80%;
+    padding-top: 20px;
 }
 
 .listBarContainer {
@@ -32,7 +44,7 @@ body {
 .listContent {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 60%;
 }
 
 .newListContainer {
@@ -41,8 +53,34 @@ body {
 
 .listEditContainer {
     display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.icons {
+    font-size: 20px;
+    border: 1px solid #d3d3d3;
 }
 
 .taskContainer {
     display: flex;
+}
+
+input {
+    width: 80%;
+}
+
+.icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn {
+    color:darkolivegreen;
+}
+
+.taskFunctionButtonContainer {
+    display: flex;
+    justify-content: center;
 }
