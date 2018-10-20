@@ -37,7 +37,7 @@ function addList() {
     $('.listBar').append(
         '<div class="listEditContainer" id="' + listIdCounter +'">' +
             '<input id="input' + listIdCounter + '" type="text" placeholder="Enter List Name" onchange="getListName(this.value, this.id)">' +
-            '<div class="icons"><button>Delete List<i class="trash fas fa-trash-alt"></i></button><button onclick="editList(this.id)" id="button' + listIdCounter +'">Edit Tasks<i class="edit fas fa-edit"></i></button></div>' +
+            '<div class="icons"><button id="deleteList"'+listIdCounter+' onclick="deleteLists(this.id)">Delete List<i class="trash fas fa-trash-alt"></i></button><button onclick="editList(this.id)" id="button' + listIdCounter +'">Edit Tasks<i class="edit fas fa-edit"></i></button></div>' +
         '</div>'
     );
 
@@ -63,7 +63,7 @@ function displayLists() {
             $('.listBar').append(
                 '<div class="listEditContainer" id="' + i +'">' +
                 '<input id="input' + i + '" type="text" onchange="getListName(this.value, this.id)" value="'+ listArray[i].listName +'">' +
-                '<div class="icons"><button>Delete List<i class="trash fas fa-trash-alt"></i></button><button onclick="editList(this.id)" id="button' + i +'">Edit Tasks<i class="edit fas fa-edit"></i></button></div>' +
+                '<div class="icons"><button id="deleteList"'+i+' onclick="deleteLists(this.id)">Delete List<i class="trash fas fa-trash-alt"></i></button><button onclick="editList(this.id)" id="button' + i +'">Edit Tasks<i class="edit fas fa-edit"></i></button></div>' +
                 '</div>'
             );
         }
@@ -105,4 +105,11 @@ function deleteTasks(taskId) {
     let index = taskId.split('k');
     activeList.tasks.splice(index[1], 1);
     displayTasks();
+}
+
+function deleteLists(listId) {
+    let index = listId.split('t');
+    listArray.splice(index[1], 1);
+    displayLists();
+    $('.listContent').html('');
 }
