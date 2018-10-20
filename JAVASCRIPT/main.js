@@ -75,27 +75,24 @@ function displayLists() {
 function displayTasks() {
     $('.listContent').html('<div id="taskFunctionButtonContainer"><button type="button" class="listItem btn btn-secondary" onclick="addTasks()">Add Task <i class="fas fa-plus-circle"></i></button><button type="button" class="listItem btn btn-secondary clearCompleteButton" onclick="clearComplete()">Clear Complete</button></div>');
 
+    let checkmarkString = '';
+
     if(activeList.tasks.length !== 0) {
         for(let i = 0; i < activeList.tasks.length; i++) {
-            $('.listContent').append(
-                '<div class="taskContainer">' +
-                '<input id="task_' + i +'" type="text" onchange="getTaskName(this.value, this.id)" value="' + activeList.tasks[i] + '">' +
-                '<button id="deleteTask_' + i +'" onclick="deleteTasks(this.id)"><i class="trash fas fa-trash-alt"></i></button></div>'
-            );
 
             if (activeList.taskCompleted[i] == true) {
-                $('.listContent').append(
-                    '<button id="complete_'+ i +'" onclick="markUncomplete(this.id)"><i class="fas fa-check-square"></i></button>'
-                );
+                checkmarkString = '<button type="button" class="btn" id="complete_'+ i +'" onclick="markUncomplete(this.id)"><i class="fas fa-check-square"></i></button>'
             }
             else {
-                $('.listContent').append(
-                    '<button id="complete_'+ i +'" onclick="markComplete(this.id)"><i class="fas fa-square"></i></button>'
-                );
+                checkmarkString = '<button type="button" class="btn" id="complete_'+ i +'" onclick="markComplete(this.id)"><i class="fas fa-square"></i></button>'
             }
+
             $('.listContent').append(
+                '<div class="taskContainer">' +
+                '<div class="iconContainer"><button type="button" class="btn" id="deleteTask_' + i +'" onclick="deleteTasks(this.id)"><i class="trash fas fa-trash-alt"></i></button>' + checkmarkString + '</div>' +
+                '<input id="task_' + i +'" type="text" onchange="getTaskName(this.value, this.id)" value="' + activeList.tasks[i] + '">' +
                 '</div>'
-            )
+            );
         }
     }
 }
