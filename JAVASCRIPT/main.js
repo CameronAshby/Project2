@@ -1,6 +1,20 @@
 let listArray = [];
 let listIdCounter = 0;
 
+// Classes
+class newList {
+    constructor() {
+        this.tasks = [];
+        this.listName = '';
+    }
+    addTask() {
+
+    }
+    removeTask() {
+
+    }
+}
+
 // class Store {
 //     constructor(listIndex, listContent) {
 //         this.listIndex = listIndex;
@@ -19,29 +33,18 @@ let listIdCounter = 0;
 //     };
 // }
 
+// Functions
+
 function addList() {
-    let listName;
+
+    listArray.push(new newList());
 
     $('.listBar').append(
-        '<div id="' + listIdCounter +'" class="newListContainer" style="display: flex;">' +
-            '<input id="input' + listIdCounter + '" type="text" placeholder="List Name" onkeydown="getVal(this.value)">' +
-            '<div><i onclick="buildList()" class="editList fas fa-edit"></i><i onclick="trash(this.id)" class="trashBin fas fa-trash-alt"></i></div>' +
+        '<div id="' + listIdCounter +'">' +
+            '<input id="input' + listIdCounter + '" type="text" placeholder="Enter List Name" onchange="getListName(this.value, this.id)">' +
         '</div>'
     );
 
-    class newList {
-        constructor(listId, listName) {
-            this.tasks = [];
-            this.listId = listId;
-            this.listName = listName
-        }
-    };
-
-    // let listName = prompt('Enter the name of your list');
-
-    $('#' + listIdCounter).append(listName);
-
-    listArray.push($('#' + listIdCounter));
     listIdCounter++;
 }
 
@@ -80,6 +83,7 @@ function trash(myId) {
 
 }
 
-function getVal(listValue) {
-    return listValue;
+function getListName(listVal, numId) {
+    let index = numId.split('t');
+    listArray[index[1]].listName = listVal;
 }
