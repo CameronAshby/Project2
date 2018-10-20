@@ -34,3 +34,7 @@ body {
 .newListContainer {
     display: flex;
 }
+
+.listEditContainer {
+    display: flex;
+}

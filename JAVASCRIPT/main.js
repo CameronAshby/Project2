@@ -1,17 +1,12 @@
 let listArray = [];
 let listIdCounter = 0;
+let activeList;
 
 // Classes
 class newList {
     constructor() {
         this.tasks = [];
         this.listName = '';
-    }
-    addTask() {
-
-    }
-    removeTask() {
-
     }
 }
 
@@ -40,50 +35,48 @@ function addList() {
     listArray.push(new newList());
 
     $('.listBar').append(
-        '<div id="' + listIdCounter +'">' +
+        '<div class="listEditContainer" id="' + listIdCounter +'">' +
             '<input id="input' + listIdCounter + '" type="text" placeholder="Enter List Name" onchange="getListName(this.value, this.id)">' +
+            '<div class="icons"><i class="trash fas fa-trash-alt"></i><button onclick="editList(this.id)" id="button' + listIdCounter +'">Edit Tasks<i class="edit fas fa-edit"></i></button></div>' +
         '</div>'
     );
 
     listIdCounter++;
 }
 
-function buildList() {
-    $('.listContent').append(
-        '<button class="listItem" onclick="addListItem()">Add Task<i class="fas fa-plus-circle"></i></button>'
-    );
+function getListName(listVal, listId) {
+    let index = listId.split('t');
+    listArray[index[1]].listName = listVal;
+}
+
+function editList(buttonId) {
+    let newId = buttonId.split('n');
+    activeList = listArray[newId[1]];
+    displayTasks();
+}
+
+function displayTasks() {
+    $('.listContent').html('<button class="listItem" onclick="addListItem()">Add Task<i class="fas fa-plus-circle"></i></button>');
+
+    if(activeList.tasks.length !== 0) {
+        //Display My Tasks
+    }
+    else {
+
+    }
 }
 
 function addListItem() {
+    activeList.tasks.push('');
+
     $('.listContent').append(
-        '<div id="test">Test<i onclick="" class="fas fa-trash-alt"></i></div>'
+        '<input id="task' + (activeList.tasks.length-1) + '" type="text" placeholder="Enter Task Name" onchange="getTaskName(this.value, this.id)">'
     );
 
-    listArray.push($('#test'));
     listIdCounter++;
 }
 
-function clearList() {
-
-}
-
-function clearListItem() {
-
-}
-
-function storeList() {
-
-}
-
-function changeList() {
-
-}
-
-function trash(myId) {
-
-}
-
-function getListName(listVal, numId) {
-    let index = numId.split('t');
-    listArray[index[1]].listName = listVal;
+function getTaskName(taskVal, taskId) {
+    let index = taskId.split('k');
+    activeList.tasks[index[1]] = taskVal;
 }
