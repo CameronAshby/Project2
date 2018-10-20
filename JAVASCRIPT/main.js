@@ -37,7 +37,7 @@ function addList() {
     $('.listBar').append(
         '<div class="listEditContainer" id="' + listIdCounter +'">' +
             '<input id="input' + listIdCounter + '" type="text" placeholder="Enter List Name" onchange="getListName(this.value, this.id)">' +
-            '<div class="icons"><i class="trash fas fa-trash-alt"></i><button onclick="editList(this.id)" id="button' + listIdCounter +'">Edit Tasks<i class="edit fas fa-edit"></i></button></div>' +
+            '<div class="icons"><button>Delete List<i class="trash fas fa-trash-alt"></i></button><button onclick="editList(this.id)" id="button' + listIdCounter +'">Edit Tasks<i class="edit fas fa-edit"></i></button></div>' +
         '</div>'
     );
 
@@ -47,6 +47,7 @@ function addList() {
 function getListName(listVal, listId) {
     let index = listId.split('t');
     listArray[index[1]].listName = listVal;
+    displayLists();
 }
 
 function editList(buttonId) {
@@ -55,13 +56,30 @@ function editList(buttonId) {
     displayTasks();
 }
 
+function displayLists() {
+    $('.listBar').html('');
+    if(listArray.length !== 0) {
+        for(let i = 0; i < listArray.length; i++) {
+            $('.listBar').append(
+                '<div class="listEditContainer" id="' + i +'">' +
+                '<input id="input' + i + '" type="text" onchange="getListName(this.value, this.id)" value="'+ listArray[i].listName +'">' +
+                '<div class="icons"><button>Delete List<i class="trash fas fa-trash-alt"></i></button><button onclick="editList(this.id)" id="button' + i +'">Edit Tasks<i class="edit fas fa-edit"></i></button></div>' +
+                '</div>'
+            );
+        }
+    }
+}
+
 function displayTasks() {
     $('.listContent').html('<button class="listItem" onclick="addListItem()">Add Task<i class="fas fa-plus-circle"></i></button>');
 
     if(activeList.tasks.length !== 0) {
         for(let i = 0; i < activeList.tasks.length; i++) {
             $('.listContent').append(
-                '<input id="task' + i +'" type="text" onchange="getTaskName(this.value, this.id)" value="' + activeList.tasks[i] + '">'
+                '<div class="taskContainer">' +
+                    '<input id="task' + i +'" type="text" onchange="getTaskName(this.value, this.id)" value="' + activeList.tasks[i] + '">' +
+                    '<div class="icons"><button>Delete Task<i class="trash fas fa-trash-alt"></i></button><button>Complete?<i class="fas fa-square"></i></button></div>' +
+                '</div>'
             );
         }
     }
@@ -78,4 +96,5 @@ function addListItem() {
 function getTaskName(taskVal, taskId) {
     let index = taskId.split('k');
     activeList.tasks[index[1]] = taskVal;
+    displayTasks();
 }

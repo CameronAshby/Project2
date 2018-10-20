@@ -19,7 +19,7 @@ body {
     display: flex;
 }
 
-.listBar {
+.listBarContainer {
     display: flex;
     flex-direction: column;
     width: 30%;
@@ -36,5 +36,9 @@ body {
 }
 
 .listEditContainer {
+    display: flex;
+}
+
+.taskContainer {
     display: flex;
 }
