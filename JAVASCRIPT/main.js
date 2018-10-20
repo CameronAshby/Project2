@@ -7,6 +7,7 @@ class newList {
     constructor() {
         this.tasks = [];
         this.listName = '';
+        this.taskCompleted = [];
     }
 }
 
@@ -71,22 +72,36 @@ function displayLists() {
 }
 
 function displayTasks() {
-    $('.listContent').html('<button class="listItem" onclick="addTasks()">Add Task<i class="fas fa-plus-circle"></i></button>');
+    $('.listContent').html('<button class="listItem" onclick="addTasks()">Add Task<i class="fas fa-plus-circle"></i></button><button class="clearCompleteButton" onclick="clearComplete()">Clear Complete</button>');
 
     if(activeList.tasks.length !== 0) {
         for(let i = 0; i < activeList.tasks.length; i++) {
             $('.listContent').append(
                 '<div class="taskContainer">' +
-                    '<input id="task' + i +'" type="text" onchange="getTaskName(this.value, this.id)" value="' + activeList.tasks[i] + '">' +
-                    '<div class="icons"><button id="deleteTask"' + i + ' onclick="deleteTasks(this.id)">Delete Task<i class="trash fas fa-trash-alt"></i></button><button>Complete?<i class="fas fa-square"></i></button></div>' +
-                '</div>'
+                '<input id="task' + i +'" type="text" onchange="getTaskName(this.value, this.id)" value="' + activeList.tasks[i] + '">' +
+                '<button id="deleteTask' + i +'" onclick="deleteTasks(this.id)">Delete Task<i class="trash fas fa-trash-alt"></i></button></div>'
             );
+
+            if (activeList.taskCompleted[i] == true) {
+                $('.listContent').append(
+                    '<button id="complete_'+ i +'" onclick="markUncomplete(this.id)">Complete<i class="fas fa-check-square"></i></button>'
+                );
+            }
+            else {
+                $('.listContent').append(
+                    '<button id="complete_'+ i +'" onclick="markComplete(this.id)">Complete<i class="fas fa-square"></i></button>'
+                );
+            }
+            $('.listContent').append(
+                '</div>'
+            )
         }
     }
 }
 
 function addTasks() {
     activeList.tasks.push('');
+    activeList.taskCompleted.push(false);
 
     $('.listContent').append(
         '<input id="task' + (activeList.tasks.length-1) + '" type="text" placeholder="Enter Task Name" onchange="getTaskName(this.value, this.id)">'
@@ -104,6 +119,7 @@ function getTaskName(taskVal, taskId) {
 function deleteTasks(taskId) {
     let index = taskId.split('k');
     activeList.tasks.splice(index[1], 1);
+    activeList.taskCompleted.splice(index[1], 1);
     displayTasks();
 }
 
@@ -112,4 +128,28 @@ function deleteLists(listId) {
     listArray.splice(index[1], 1);
     displayLists();
     $('.listContent').html('');
+}
+
+function markComplete(taskId) {
+    let index = taskId.split('_');
+    activeList.taskCompleted[index[1]] = true;
+    displayTasks();
+}
+
+function markUncomplete(taskId) {
+    let index = taskId.split('_');
+    activeList.taskCompleted[index[1]] = false;
+    displayTasks();
+}
+
+// Clearing Functions
+function clearComplete() {
+    for (let i = 0; i < activeList.taskCompleted.length; i++) {
+        if(activeList.taskCompleted[i] === true) {
+            activeList.taskCompleted.splice(i, 1);
+            activeList.tasks.splice(i, 1);
+        }
+    }
+
+    displayTasks();
 }

@@ -10,6 +10,10 @@ body {
     justify-content: center;
 }
 
+.navbar {
+    background-color: darkolivegreen;
+}
+
 .mainContainer {
     padding: 50px 0;
     width: 80%;
