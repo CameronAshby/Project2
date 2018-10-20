@@ -59,10 +59,11 @@ function displayTasks() {
     $('.listContent').html('<button class="listItem" onclick="addListItem()">Add Task<i class="fas fa-plus-circle"></i></button>');
 
     if(activeList.tasks.length !== 0) {
-        //Display My Tasks
-    }
-    else {
-
+        for(let i = 0; i < activeList.tasks.length; i++) {
+            $('.listContent').append(
+                '<input id="task' + i +'" type="text" onchange="getTaskName(this.value, this.id)" value="' + activeList.tasks[i] + '">'
+            );
+        }
     }
 }
 
@@ -72,8 +73,6 @@ function addListItem() {
     $('.listContent').append(
         '<input id="task' + (activeList.tasks.length-1) + '" type="text" placeholder="Enter Task Name" onchange="getTaskName(this.value, this.id)">'
     );
-
-    listIdCounter++;
 }
 
 function getTaskName(taskVal, taskId) {
