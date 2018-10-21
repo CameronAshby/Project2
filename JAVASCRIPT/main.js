@@ -13,23 +13,8 @@ class newList {
     }
 }
 
-// class Store {
-//     constructor(listIndex, listContent) {
-//         this.listIndex = listIndex;
-//         this.listContent = listContent;
-//     }
-//     static storeList(listIndex, listContent) {
-//         let listString = JSON.stringify(listContent);
-//         localStorage.setItem(listIndex, listString);
-//     };
-//     static changeList(listIndex)  {
-//         let listContent = localStorage.getItem(listIndex);
-//         return JSON.parse(listContent);
-//     };
-//     static clearList(listIndex) {
-//         localStorage.removeItem(listId);
-//     };
-// }
+// Onload
+$(document).ready(loadLocal());
 
 // Adding Functions
 
@@ -52,6 +37,7 @@ function getListName(listVal, listId) {
     let index = listId.split('t');
     listArray[index[1]].listName = listVal;
     displayLists();
+    storeLocal();
 }
 
 function editList(buttonId) {
@@ -97,6 +83,7 @@ function displayTasks() {
             );
         }
     }
+    storeLocal();
 }
 
 function addTasks() {
@@ -115,6 +102,7 @@ function getTaskName(taskVal, taskId) {
     let index = taskId.split('_');
     activeList.tasks[index[1]] = taskVal;
     displayTasks();
+    storeLocal();
 }
 
 // Deleting Functions
@@ -127,7 +115,6 @@ function deleteTasks(taskId) {
 }
 
 function deleteLists(listId) {
-    console.log(listId);
     let index = listId.split('_');
     listArray.splice(index[1], 1);
     displayLists();
@@ -158,4 +145,22 @@ function clearComplete() {
     }
 
     displayTasks();
+}
+
+// Local Storage
+
+function storeLocal() {
+    let listString = JSON.stringify(listArray);
+    localStorage.setItem(0, listString);
+}
+
+function loadLocal() {
+    let listContent = localStorage.getItem(0);
+    listArray = JSON.parse(listContent);
+    if(listArray !== null) {
+        displayLists();
+    }
+    else {
+        listArray = [];
+    }
 }
