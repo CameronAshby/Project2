@@ -120,6 +120,7 @@ function deleteLists(listId) {
     displayLists();
     $('.listContent').html('');
     listIdCounter--;
+    storeLocal();
 }
 
 function markComplete(taskId) {
