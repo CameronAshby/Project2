@@ -61,7 +61,7 @@ function displayLists() {
 }
 
 function displayTasks() {
-    $('.listContent').html('<div class="currentListName">Current List: ' + activeList.listName + '</div><div class="taskFunctionButtonContainer"><button type="button" class="listItem btn btn-secondary" onclick="addTasks()">Add Task <i class="fas fa-plus-circle"></i></button><button type="button" class="listItem btn btn-secondary clearCompleteButton" onclick="clearComplete()">Clear Complete <i class="fas fa-check-square"></i></button></div>');
+    $('.listContent').html('<div class="currentListName">Current List: ' + activeList.listName + '</div><div class="taskFunctionButtonContainer"><button type="button" class="listItem btn btn-secondary" onclick="addTasks()">Add Task <i class="fas fa-plus-circle"></i></button><button type="button" class="listItem btn btn-secondary clearCompleteButton" onclick="clearComplete()">Clear Complete</button></div>');
 
     let checkmarkString = '';
 

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94f23b9e-cf95-41ca-b9ae-50cb520b9414" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JAVASCRIPT/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/JAVASCRIPT/main.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -44,16 +45,16 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="1241" />
+          <entry key="css" value="1243" />
           <entry key="html" value="597" />
-          <entry key="js" value="6026" />
+          <entry key="js" value="6027" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="1241" />
+          <entry key="CSS" value="1243" />
           <entry key="HTML" value="601" />
-          <entry key="JavaScript" value="6022" />
+          <entry key="JavaScript" value="6023" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -80,8 +81,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/CSS/style.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1380">
-                  <caret line="92" column="15" selection-start-line="92" selection-start-column="15" selection-end-line="92" selection-end-column="15" />
+                <state relative-caret-position="1178">
+                  <caret line="92" column="15" lean-forward="true" selection-start-line="92" selection-start-column="15" selection-end-line="92" selection-end-column="15" />
                 </state>
               </provider>
             </entry>
@@ -89,8 +90,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/JAVASCRIPT/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="276">
-                  <caret line="63" column="393" selection-start-line="63" selection-start-column="393" selection-end-line="63" selection-end-column="393" />
+                <state relative-caret-position="321">
+                  <caret line="63" column="392" selection-start-line="63" selection-start-column="392" selection-end-line="63" selection-end-column="392" />
                 </state>
               </provider>
             </entry>
@@ -208,12 +209,12 @@
       <workItem from="1539968076443" duration="116000" />
       <workItem from="1539968223645" duration="11975000" />
       <workItem from="1539998415425" duration="11899000" />
-      <workItem from="1540051437682" duration="17320000" />
+      <workItem from="1540051437682" duration="17829000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53953000" />
+    <option name="totallyTimeSpent" value="54462000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="796" extended-state="0" />
@@ -280,15 +281,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CSS/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1380">
-          <caret line="92" column="15" selection-start-line="92" selection-start-column="15" selection-end-line="92" selection-end-column="15" />
+        <state relative-caret-position="1178">
+          <caret line="92" column="15" lean-forward="true" selection-start-line="92" selection-start-column="15" selection-end-line="92" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/JAVASCRIPT/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="63" column="393" selection-start-line="63" selection-start-column="393" selection-end-line="63" selection-end-column="393" />
+        <state relative-caret-position="321">
+          <caret line="63" column="392" selection-start-line="63" selection-start-column="392" selection-end-line="63" selection-end-column="392" />
         </state>
       </provider>
     </entry>
