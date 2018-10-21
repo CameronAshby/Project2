@@ -38,7 +38,7 @@ body {
 .listBarContainer {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 33%;
 }
 
 .listContent {
@@ -59,7 +59,7 @@ body {
 }
 
 input {
-    width: 80%;
+    width: 90%;
 }
 
 .icons, .iconContainer {
@@ -75,6 +75,20 @@ input {
 }
 
 .taskFunctionButtonContainer {
+    width: 80%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+}
+
+.currentListName {
+    font-size: 20px;
+    padding: 10px;
+}
+
+.listItem {
+    width: 45%;
+}
+
+.taskContainer {
+    width: 80%;
 }

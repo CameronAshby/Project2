@@ -34,6 +34,8 @@ class newList {
 // Adding Functions
 
 function addList() {
+    $('.listContent').html('');
+
     listArray.push(new newList());
 
     $('.listBar').append(
@@ -73,7 +75,7 @@ function displayLists() {
 }
 
 function displayTasks() {
-    $('.listContent').html('<div id="taskFunctionButtonContainer"><button type="button" class="listItem btn btn-secondary" onclick="addTasks()">Add Task <i class="fas fa-plus-circle"></i></button><button type="button" class="listItem btn btn-secondary clearCompleteButton" onclick="clearComplete()">Clear Complete</button></div>');
+    $('.listContent').html('<div class="currentListName">Current List: ' + activeList.listName + '</div><div class="taskFunctionButtonContainer"><button type="button" class="listItem btn btn-secondary" onclick="addTasks()">Add Task <i class="fas fa-plus-circle"></i></button><button type="button" class="listItem btn btn-secondary clearCompleteButton" onclick="clearComplete()">Clear Complete</button></div>');
 
     let checkmarkString = '';
 
@@ -102,7 +104,10 @@ function addTasks() {
     activeList.taskCompleted.push(false);
 
     $('.listContent').append(
-        '<input id="task_' + (activeList.tasks.length-1) + '" type="text" placeholder="Enter Task Name" onchange="getTaskName(this.value, this.id)">'
+        '<div class="taskContainer">' +
+        '<div class="iconContainer"><button type="button" class="btn" id="deleteTask_' + (activeList.tasks.length-1) +'" onclick="deleteTasks(this.id)"><i class="trash fas fa-trash-alt"></i></button><button type="button" class="btn" id="complete_'+ (activeList.tasks.length-1) +'" onclick="markComplete(this.id)"><i class="fas fa-square"></i></button>'+ '</div>' +
+        '<input id="task_' + (activeList.tasks.length-1) + '" type="text" placeholder="Enter Task Name" onchange="getTaskName(this.value, this.id)">' +
+        '</div>'
     );
 }
 
